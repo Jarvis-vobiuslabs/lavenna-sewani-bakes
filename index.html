@@ -54,7 +54,10 @@
       .nav{gap:10px}
       .brand span{display:none}
       .nav > div{width:100%}
-      .nav .btn{flex:1;justify-content:center}
+      .nav .btn{flex:1;justify-content:center;padding:14px 14px;border-radius:14px}
+      .wrap{padding:0 16px}
+      .hCard{padding:18px}
+      .section{padding:40px 0}
     }
 
     .btn{display:inline-flex;align-items:center;gap:.55rem;padding:12px 16px;border-radius:12px;border:1px solid var(--stroke);text-decoration:none;font-weight:800}
@@ -78,7 +81,9 @@
 
     .menu{padding:18px 0 0}
     .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-    @media(max-width:900px){.grid{grid-template-columns:1fr}}
+    .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    @media(max-width:980px){.grid3{grid-template-columns:1fr 1fr}}
+    @media(max-width:900px){.grid,.grid3{grid-template-columns:1fr}}
 
     .card{border:1px solid var(--stroke);background:rgba(255,255,255,.90);border-radius:18px;padding:20px;box-shadow:0 18px 60px rgba(15,23,42,.06)}
     .card h3{margin:0 0 10px;font-size:1.05rem;letter-spacing:-.02em}
@@ -121,7 +126,7 @@
       </div>
     </div>
 
-    <div id="top" class="hero">
+    <div id="top" class="hero" style="padding-top:40px">
       <div class="heroGrid">
         <div class="hCard" style="display:grid;gap:14px">
           <img src="hero.png" alt="Freshly baked chocolate brownies with milk chocolate drizzle" style="width:100%;height:auto;border-radius:16px;border:1px solid rgba(15,23,42,.10);box-shadow:0 14px 40px rgba(15,23,42,.10)" loading="eager" />
@@ -157,7 +162,7 @@
       <h2>Menu & pricing</h2>
       <p class="small">Start with the brownie boxes below. (We can add cakes + custom items once you send your full menu.)</p>
 
-      <div class="grid" style="margin-top:18px">
+      <div class="grid3" style="margin-top:18px">
         <div class="card" style="display:grid;gap:12px">
           <img src="brownies.png" alt="Brownie box" style="width:100%;height:auto;border-radius:16px;border:1px solid rgba(15,23,42,.10)" loading="lazy" />
           <h3>Brownie Box — 6 pieces</h3>
@@ -168,12 +173,21 @@
           </div>
         </div>
         <div class="card" style="display:grid;gap:12px">
-          <img src="cakes.png" alt="Cake and bakery treats" style="width:100%;height:auto;border-radius:16px;border:1px solid rgba(15,23,42,.10)" loading="lazy" />
+          <img src="brownies.png" alt="Brownie box — 9 pieces" style="width:100%;height:auto;border-radius:16px;border:1px solid rgba(15,23,42,.10)" loading="lazy" />
           <h3>Brownie Box — 9 pieces</h3>
           <p>More pieces for sharing, gifting, or small celebrations. Same freshly baked-to-order brownies.</p>
           <div class="price">
             <strong>$27</strong>
             <span class="tag">Best for gifting</span>
+          </div>
+        </div>
+        <div class="card" style="display:grid;gap:12px">
+          <img src="cakes.png" alt="Cakes & custom bakes" style="width:100%;height:auto;border-radius:16px;border:1px solid rgba(15,23,42,.10)" loading="lazy" />
+          <h3>Cakes & custom bakes</h3>
+          <p>Need something specific for a birthday or small celebration? Message with your idea, date, and servings — we’ll confirm pricing.</p>
+          <div class="price">
+            <strong>Custom</strong>
+            <span class="tag">By request</span>
           </div>
         </div>
       </div>
