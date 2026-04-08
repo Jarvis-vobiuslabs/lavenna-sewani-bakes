@@ -44,17 +44,19 @@
     a{color:inherit}
     .wrap{max-width:1050px;margin:0 auto;padding:0 22px}
 
-    .nav{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:12px;padding:18px 0;position:sticky;top:0;background:linear-gradient(to bottom, rgba(255,247,237,.92), rgba(255,247,237,.62) 60%, transparent);backdrop-filter: blur(10px);z-index:10}
-    .brand{display:flex;align-items:center;justify-content:center;text-decoration:none;min-width:0;flex:1;text-align:center}
-    .brand b{font-weight:900;letter-spacing:-.03em;font-size:1rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .nav{display:flex;flex-direction:column;align-items:stretch;gap:10px;padding:16px 0;position:sticky;top:0;background:linear-gradient(to bottom, rgba(255,247,237,.92), rgba(255,247,237,.62) 60%, transparent);backdrop-filter: blur(10px);z-index:10}
+    .brand{display:flex;align-items:center;justify-content:center;text-decoration:none;min-width:0;text-align:center}
+    .brand b{font-weight:950;letter-spacing:-.04em;font-size:1.05rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
     .brand span{display:block;font-size:.78rem;color:var(--muted2);margin-top:2px}
+
+    .navActions{display:flex;justify-content:space-between;gap:10px;align-items:center}
+    .navActions .btn{flex:0 0 auto}
 
     /* mobile header cleanup */
     @media(max-width:520px){
-      .nav{gap:10px}
       .brand span{display:none}
-      .nav > div{width:100%}
-      .nav .btn{flex:1;justify-content:center;padding:14px 14px;border-radius:14px}
+      .navActions{justify-content:space-between}
+      .navActions .btn{padding:14px 14px;border-radius:14px}
       .wrap{padding:0 16px}
       .hCard{padding:18px}
       .section{padding:40px 0}
@@ -91,7 +93,7 @@
 
     .price{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.08)}
     .price strong{font-size:1.35rem;letter-spacing:-.02em}
-    .tag{font-size:.78rem;color:rgba(255,255,255,.72);background:rgba(245,158,11,.10);border:1px solid rgba(245,158,11,.18);padding:6px 10px;border-radius:999px}
+    .tag{font-size:.78rem;color:rgba(15,23,42,.78);background:rgba(249,115,22,.12);border:1px solid rgba(249,115,22,.22);padding:6px 10px;border-radius:999px}
 
     .section{padding:52px 0}
     .section h2{margin:0 0 10px;font-size:clamp(1.6rem,3vw,2.25rem);letter-spacing:-.04em}
@@ -120,13 +122,13 @@
         </div>
       </a>
 
-      <div style="display:flex;gap:10px;align-items:center;justify-content:center;flex:1;min-width:260px">
-        <a class="btn ghost" href="#menu">Menu</a>
+      <div class="navActions">
+        <a class="btn ghost" id="navMenu" href="#menu">Menu</a>
         <a class="btn primary" href="https://www.facebook.com/share/1RvvL7qNSr/?mibextid=wwXIfr" target="_blank" rel="noopener">Order on Facebook</a>
       </div>
     </div>
 
-    <div id="top" class="hero" style="padding-top:40px">
+    <div id="top" class="hero reveal" style="padding-top:40px">
       <div class="heroGrid">
         <div class="hCard" style="display:grid;gap:14px">
           <img src="hero.png" alt="Freshly baked chocolate brownies with milk chocolate drizzle" style="width:100%;height:auto;border-radius:16px;border:1px solid rgba(15,23,42,.10);box-shadow:0 14px 40px rgba(15,23,42,.10)" loading="eager" />
@@ -158,7 +160,7 @@
       </div>
     </div>
 
-    <div id="menu" class="section">
+    <div id="menu" class="section reveal">
       <h2>Menu & pricing</h2>
       <p class="small">Start with the brownie boxes below. (We can add cakes + custom items once you send your full menu.)</p>
 
@@ -198,7 +200,7 @@
       </div>
     </div>
 
-    <div id="how" class="section">
+    <div id="how" class="section reveal">
       <h2>How ordering works</h2>
       <p class="small">Simple and fast — baked fresh, not sitting on a shelf.</p>
 
@@ -218,7 +220,7 @@
       </div>
     </div>
 
-    <div id="reviews" class="section">
+    <div id="reviews" class="section reveal">
       <h2>What customers say</h2>
       <p class="small">A few recent notes (sample reviews for now — replace with real ones anytime).</p>
 
@@ -263,7 +265,53 @@
         </div>
       </div>
       <div style="margin-top:14px;color:rgba(15,23,42,.45);font-size:.82rem">© <span id="y"></span> Lavenna Sewani. Fresh baked on order.</div>
-      <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
+      <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Smooth scroll with ease-out (slows as it reaches target)
+    function easeOutCubic(t){ return 1 - Math.pow(1 - t, 3); }
+    function smoothScrollTo(targetY, duration){
+      const startY = window.scrollY;
+      const diff = targetY - startY;
+      const start = performance.now();
+      function step(now){
+        const t = Math.min(1, (now - start) / duration);
+        const eased = easeOutCubic(t);
+        window.scrollTo(0, startY + diff * eased);
+        if(t < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+    const menuBtn = document.getElementById('navMenu');
+    menuBtn?.addEventListener('click', (e) => {
+      e.preventDefault();
+      const el = document.getElementById('menu');
+      if(!el) return;
+      const y = el.getBoundingClientRect().top + window.scrollY - 90;
+      smoothScrollTo(y, 900);
+    });
+
+    // Fade-in on scroll
+    const io = new IntersectionObserver((entries) => {
+      for(const en of entries){
+        if(en.isIntersecting){
+          en.target.classList.add('in');
+          io.unobserve(en.target);
+        }
+      }
+    }, { threshold: 0.14 });
+
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
+
+  <style>
+    .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease, transform .6s ease}
+    .reveal.in{opacity:1;transform:none}
+    @media (prefers-reduced-motion: reduce){
+      .reveal{opacity:1;transform:none;transition:none}
+    }
+  </style>
+
     </div>
   </div>
 
