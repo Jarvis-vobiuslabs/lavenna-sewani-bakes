@@ -21,12 +21,12 @@
 
   <style>
     :root{
-      --bg:#07060a;
-      --card:#0f0e14;
-      --stroke:rgba(255,255,255,.10);
-      --muted:rgba(255,255,255,.62);
-      --muted2:rgba(255,255,255,.40);
-      --text:rgba(255,255,255,.92);
+      --bg:#fffaf3;
+      --card:#ffffff;
+      --stroke:rgba(20,10,5,.10);
+      --muted:rgba(20,10,5,.70);
+      --muted2:rgba(20,10,5,.55);
+      --text:rgba(20,10,5,.92);
       --accent:#b45309; /* cocoa */
       --accent2:#f59e0b; /* drizzle */
     }
@@ -35,16 +35,16 @@
       margin:0;
       font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
       background:
-        radial-gradient(1200px 700px at 20% -10%, rgba(245,158,11,.16), transparent 60%),
-        radial-gradient(900px 600px at 80% 0%, rgba(180,83,9,.18), transparent 55%),
-        radial-gradient(1000px 700px at 50% 110%, rgba(124,58,237,.08), transparent 60%),
+        radial-gradient(1200px 700px at 20% -10%, rgba(245,158,11,.20), transparent 60%),
+        radial-gradient(900px 600px at 85% 5%, rgba(180,83,9,.14), transparent 55%),
+        radial-gradient(1000px 700px at 50% 110%, rgba(245,158,11,.10), transparent 60%),
         var(--bg);
       color:var(--text);
     }
     a{color:inherit}
     .wrap{max-width:1050px;margin:0 auto;padding:0 22px}
 
-    .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0;position:sticky;top:0;background:linear-gradient(to bottom, rgba(7,6,10,.92), rgba(7,6,10,.55) 60%, transparent);backdrop-filter: blur(10px);z-index:10}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0;position:sticky;top:0;background:linear-gradient(to bottom, rgba(255,250,243,.92), rgba(255,250,243,.62) 60%, transparent);backdrop-filter: blur(10px);z-index:10}
     .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
     .logo{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg, rgba(245,158,11,.18), rgba(180,83,9,.10));border:1px solid var(--stroke);display:grid;place-items:center}
     .brand b{font-weight:900;letter-spacing:-.02em}
@@ -58,7 +58,7 @@
     .heroGrid{display:grid;grid-template-columns: 1.15fr .85fr;gap:26px;align-items:stretch}
     @media(max-width:900px){.heroGrid{grid-template-columns:1fr}}
 
-    .hCard{border:1px solid var(--stroke);background:rgba(255,255,255,.03);border-radius:18px;padding:28px;overflow:hidden;position:relative}
+    .hCard{border:1px solid var(--stroke);background:rgba(255,255,255,.75);border-radius:18px;padding:28px;overflow:hidden;position:relative;box-shadow:0 22px 70px rgba(20,10,5,.06) }
     .pill{display:inline-flex;align-items:center;gap:.55rem;padding:8px 12px;border-radius:999px;border:1px solid rgba(245,158,11,.22);background:rgba(245,158,11,.08);color:rgba(255,255,255,.85);font-weight:700;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase}
     h1{margin:16px 0 10px;font-size:clamp(2.2rem,4.6vw,3.3rem);letter-spacing:-.05em;line-height:1.04}
     .sub{color:var(--muted);font-size:1.02rem;line-height:1.7;max-width:58ch}
@@ -122,7 +122,8 @@
 
     <div id="top" class="hero">
       <div class="heroGrid">
-        <div class="hCard">
+        <div class="hCard" style="display:grid;gap:14px">
+          <img src="/hero.png" alt="Freshly baked chocolate brownies with milk chocolate drizzle" style="width:100%;height:auto;border-radius:14px;border:1px solid rgba(20,10,5,.10);box-shadow:0 14px 40px rgba(20,10,5,.08)" loading="eager" />
           <span class="pill">Freshly baked on order • 1 day notice</span>
           <h1>Brownies that hit the craving.
             <span style="color:rgba(245,158,11,.95)">Every time.</span>
@@ -156,7 +157,8 @@
       <p class="small">Start with the brownie boxes below. (We can add cakes + custom items once you send your full menu.)</p>
 
       <div class="grid" style="margin-top:18px">
-        <div class="card">
+        <div class="card" style="display:grid;gap:12px">
+          <img src="/brownies.png" alt="Brownie box" style="width:100%;height:auto;border-radius:14px;border:1px solid rgba(20,10,5,.10)" loading="lazy" />
           <h3>Brownie Box — 6 pieces</h3>
           <p>Soft inside, slightly crisp edges, deep chocolate flavor, finished with a silky milk chocolate drizzle.</p>
           <div class="price">
@@ -164,7 +166,8 @@
             <span class="tag">Best for cravings</span>
           </div>
         </div>
-        <div class="card">
+        <div class="card" style="display:grid;gap:12px">
+          <img src="/cakes.png" alt="Cake and bakery treats" style="width:100%;height:auto;border-radius:14px;border:1px solid rgba(20,10,5,.10)" loading="lazy" />
           <h3>Brownie Box — 9 pieces</h3>
           <p>More pieces for sharing, gifting, or small celebrations. Same freshly baked-to-order brownies.</p>
           <div class="price">
