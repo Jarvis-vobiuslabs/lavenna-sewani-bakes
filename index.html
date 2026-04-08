@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lavenna Sewani — Brownies & Cakes (Baked to Order)</title>
+  <meta name="description" content="Soft inside, slightly crisp edges, deep chocolate flavor — finished with a silky milk chocolate drizzle. Freshly baked to order." />
+
+  <meta property="og:title" content="Lavenna Sewani — Brownies & Cakes" />
+  <meta property="og:description" content="Freshly baked on order. Brownie boxes: 6 pieces $20 · 9 pieces $27. Order 1 day prior." />
+  <meta property="og:image" content="/og-image.png" />
+  <meta property="og:type" content="website" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="/og-image.png" />
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    :root{
+      --bg:#07060a;
+      --card:#0f0e14;
+      --stroke:rgba(255,255,255,.10);
+      --muted:rgba(255,255,255,.62);
+      --muted2:rgba(255,255,255,.40);
+      --text:rgba(255,255,255,.92);
+      --accent:#b45309; /* cocoa */
+      --accent2:#f59e0b; /* drizzle */
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+      background:
+        radial-gradient(1200px 700px at 20% -10%, rgba(245,158,11,.16), transparent 60%),
+        radial-gradient(900px 600px at 80% 0%, rgba(180,83,9,.18), transparent 55%),
+        radial-gradient(1000px 700px at 50% 110%, rgba(124,58,237,.08), transparent 60%),
+        var(--bg);
+      color:var(--text);
+    }
+    a{color:inherit}
+    .wrap{max-width:1050px;margin:0 auto;padding:0 22px}
+
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0;position:sticky;top:0;background:linear-gradient(to bottom, rgba(7,6,10,.92), rgba(7,6,10,.55) 60%, transparent);backdrop-filter: blur(10px);z-index:10}
+    .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+    .logo{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg, rgba(245,158,11,.18), rgba(180,83,9,.10));border:1px solid var(--stroke);display:grid;place-items:center}
+    .brand b{font-weight:900;letter-spacing:-.02em}
+    .brand span{display:block;font-size:.78rem;color:var(--muted2);margin-top:2px}
+
+    .btn{display:inline-flex;align-items:center;gap:.55rem;padding:12px 16px;border-radius:12px;border:1px solid var(--stroke);text-decoration:none;font-weight:800}
+    .btn.primary{background:linear-gradient(135deg, rgba(245,158,11,.95), rgba(180,83,9,.95));border-color:rgba(245,158,11,.35);color:#140b04;box-shadow:0 18px 70px rgba(245,158,11,.18)}
+    .btn.ghost{background:rgba(255,255,255,.04)}
+
+    .hero{padding:52px 0 24px}
+    .heroGrid{display:grid;grid-template-columns: 1.15fr .85fr;gap:26px;align-items:stretch}
+    @media(max-width:900px){.heroGrid{grid-template-columns:1fr}}
+
+    .hCard{border:1px solid var(--stroke);background:rgba(255,255,255,.03);border-radius:18px;padding:28px;overflow:hidden;position:relative}
+    .pill{display:inline-flex;align-items:center;gap:.55rem;padding:8px 12px;border-radius:999px;border:1px solid rgba(245,158,11,.22);background:rgba(245,158,11,.08);color:rgba(255,255,255,.85);font-weight:700;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase}
+    h1{margin:16px 0 10px;font-size:clamp(2.2rem,4.6vw,3.3rem);letter-spacing:-.05em;line-height:1.04}
+    .sub{color:var(--muted);font-size:1.02rem;line-height:1.7;max-width:58ch}
+    .ctaRow{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+
+    .spec{display:grid;gap:10px;margin-top:18px}
+    .specRow{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;border-radius:14px;background:rgba(15,14,20,.7);border:1px solid rgba(255,255,255,.08)}
+    .specRow .k{color:var(--muted2);font-size:.85rem}
+    .specRow .v{font-weight:800}
+
+    .menu{padding:18px 0 0}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    @media(max-width:900px){.grid{grid-template-columns:1fr}}
+
+    .card{border:1px solid var(--stroke);background:rgba(15,14,20,.55);border-radius:18px;padding:20px}
+    .card h3{margin:0 0 10px;font-size:1.05rem;letter-spacing:-.02em}
+    .card p{margin:0;color:var(--muted);line-height:1.65}
+
+    .price{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.08)}
+    .price strong{font-size:1.35rem;letter-spacing:-.02em}
+    .tag{font-size:.78rem;color:rgba(255,255,255,.72);background:rgba(245,158,11,.10);border:1px solid rgba(245,158,11,.18);padding:6px 10px;border-radius:999px}
+
+    .section{padding:52px 0}
+    .section h2{margin:0 0 10px;font-size:clamp(1.6rem,3vw,2.25rem);letter-spacing:-.04em}
+    .small{color:var(--muted2);line-height:1.7;margin:0}
+
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
+    @media(max-width:900px){.steps{grid-template-columns:1fr}}
+    .step{padding:16px;border-radius:18px;border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.03)}
+    .step b{display:block;font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(245,158,11,.9)}
+    .step p{margin:10px 0 0;color:var(--muted);line-height:1.65}
+
+    .footer{padding:30px 0 40px;color:rgba(255,255,255,.35)}
+    .footRow{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.10);padding-top:16px}
+
+    .note{font-size:.86rem;color:rgba(255,255,255,.45);margin-top:10px}
+  </style>
+</head>
+<body>
+
+  <div class="wrap">
+    <div class="nav">
+      <a class="brand" href="#top">
+        <span class="logo" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 3c2.8 2.9 4.2 5.5 4.2 7.7 0 2.7-1.7 4.8-4.2 4.8S7.8 13.4 7.8 10.7C7.8 8.5 9.2 5.9 12 3Z" stroke="rgba(245,158,11,.95)" stroke-width="1.6"/>
+            <path d="M8 19c1.2-1 2.6-1.5 4-1.5s2.8.5 4 1.5" stroke="rgba(180,83,9,.95)" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <div>
+          <b>Lavenna Sewani</b>
+          <span>Brownies • Cakes • Baked to order</span>
+        </div>
+      </a>
+
+      <div style="display:flex;gap:10px;align-items:center">
+        <a class="btn ghost" href="#menu">Menu</a>
+        <a class="btn primary" href="https://www.facebook.com/share/1RvvL7qNSr/?mibextid=wwXIfr" target="_blank" rel="noopener">Order on Facebook</a>
+      </div>
+    </div>
+
+    <div id="top" class="hero">
+      <div class="heroGrid">
+        <div class="hCard">
+          <span class="pill">Freshly baked on order • 1 day notice</span>
+          <h1>Brownies that hit the craving.
+            <span style="color:rgba(245,158,11,.95)">Every time.</span>
+          </h1>
+          <p class="sub">
+            Soft inside, slightly crisp edges, and loaded with deep chocolate flavor — finished with a silky milk chocolate drizzle.
+            Perfect for cravings, gifting, and small celebrations.
+          </p>
+          <div class="ctaRow">
+            <a class="btn primary" href="#menu">See pricing</a>
+            <a class="btn ghost" href="#how">How ordering works</a>
+          </div>
+          <div class="note">Orders placed at least 1 day prior. Freshly baked on order.</div>
+        </div>
+
+        <div class="hCard" style="background:rgba(15,14,20,.55)">
+          <h3 style="margin:0 0 12px;letter-spacing:-.02em">Featured brownie box</h3>
+          <p style="margin:0;color:var(--muted);line-height:1.65">Silky drizzle. Deep chocolate. Crisp edges. Soft center.</p>
+          <div class="spec">
+            <div class="specRow"><div class="k">6 pieces</div><div class="v">$20</div></div>
+            <div class="specRow"><div class="k">9 pieces</div><div class="v">$27</div></div>
+            <div class="specRow"><div class="k">Baked</div><div class="v">Fresh on order</div></div>
+            <div class="specRow"><div class="k">Best for</div><div class="v">Gifting & small events</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="menu" class="section">
+      <h2>Menu & pricing</h2>
+      <p class="small">Start with the brownie boxes below. (We can add cakes + custom items once you send your full menu.)</p>
+
+      <div class="grid" style="margin-top:18px">
+        <div class="card">
+          <h3>Brownie Box — 6 pieces</h3>
+          <p>Soft inside, slightly crisp edges, deep chocolate flavor, finished with a silky milk chocolate drizzle.</p>
+          <div class="price">
+            <strong>$20</strong>
+            <span class="tag">Best for cravings</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Brownie Box — 9 pieces</h3>
+          <p>More pieces for sharing, gifting, or small celebrations. Same freshly baked-to-order brownies.</p>
+          <div class="price">
+            <strong>$27</strong>
+            <span class="tag">Best for gifting</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:18px;display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+        <a class="btn primary" href="https://www.facebook.com/share/1RvvL7qNSr/?mibextid=wwXIfr" target="_blank" rel="noopener">Place an order</a>
+        <div style="color:var(--muted2);font-size:.9rem">Tip: mention quantity + pickup/delivery preference + date needed.</div>
+      </div>
+    </div>
+
+    <div id="how" class="section">
+      <h2>How ordering works</h2>
+      <p class="small">Simple and fast — baked fresh, not sitting on a shelf.</p>
+
+      <div class="steps">
+        <div class="step">
+          <b>Step 1</b>
+          <p>Message on Facebook with what you want (6 or 9 pieces) and the date you need it.</p>
+        </div>
+        <div class="step">
+          <b>Step 2</b>
+          <p>Place your order at least <strong>1 day prior</strong> so it can be baked fresh on order.</p>
+        </div>
+        <div class="step">
+          <b>Step 3</b>
+          <p>Pick up (or arrange delivery if offered). Enjoy warm or chilled — both are unreal.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="footRow">
+        <div>© <span id="y"></span> Lavenna Sewani</div>
+        <div style="display:flex;gap:14px;flex-wrap:wrap">
+          <a href="#menu" style="text-decoration:none;color:rgba(255,255,255,.45)">Menu</a>
+          <a href="#how" style="text-decoration:none;color:rgba(255,255,255,.45)">Ordering</a>
+          <a href="https://www.facebook.com/share/1RvvL7qNSr/?mibextid=wwXIfr" target="_blank" rel="noopener" style="text-decoration:none;color:rgba(255,255,255,.45)">Facebook</a>
+        </div>
+      </div>
+      <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
+    </div>
+  </div>
+
+</body>
+</html>
