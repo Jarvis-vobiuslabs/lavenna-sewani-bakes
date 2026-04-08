@@ -45,10 +45,17 @@
     .wrap{max-width:1050px;margin:0 auto;padding:0 22px}
 
     .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0;position:sticky;top:0;background:linear-gradient(to bottom, rgba(255,250,243,.92), rgba(255,250,243,.62) 60%, transparent);backdrop-filter: blur(10px);z-index:10}
-    .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
-    .logo{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg, rgba(245,158,11,.18), rgba(180,83,9,.10));border:1px solid var(--stroke);display:grid;place-items:center}
-    .brand b{font-weight:900;letter-spacing:-.02em}
+    .brand{display:flex;align-items:center;gap:10px;text-decoration:none;min-width:0}
+    .brand b{font-weight:900;letter-spacing:-.03em;font-size:1rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
     .brand span{display:block;font-size:.78rem;color:var(--muted2);margin-top:2px}
+
+    /* mobile header cleanup */
+    @media(max-width:520px){
+      .nav{gap:10px}
+      .brand span{display:none}
+      .nav > div{width:100%}
+      .nav .btn{flex:1;justify-content:center}
+    }
 
     .btn{display:inline-flex;align-items:center;gap:.55rem;padding:12px 16px;border-radius:12px;border:1px solid var(--stroke);text-decoration:none;font-weight:800}
     .btn.primary{background:linear-gradient(135deg, rgba(249,115,22,.98), rgba(180,83,9,.92));border-color:rgba(249,115,22,.30);color:#140b04;box-shadow:0 18px 70px rgba(249,115,22,.18)}
@@ -59,13 +66,13 @@
     @media(max-width:900px){.heroGrid{grid-template-columns:1fr}}
 
     .hCard{border:1px solid var(--stroke);background:rgba(255,255,255,.75);border-radius:18px;padding:28px;overflow:hidden;position:relative;box-shadow:0 22px 70px rgba(20,10,5,.06) }
-    .pill{display:inline-flex;align-items:center;gap:.55rem;padding:8px 12px;border-radius:999px;border:1px solid rgba(245,158,11,.22);background:rgba(245,158,11,.08);color:rgba(255,255,255,.85);font-weight:700;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase}
+    .pill{display:inline-flex;align-items:center;gap:.55rem;padding:8px 12px;border-radius:999px;border:1px solid rgba(249,115,22,.25);background:rgba(249,115,22,.10);color:rgba(15,23,42,.85);font-weight:800;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase}
     h1{margin:16px 0 10px;font-size:clamp(2.2rem,4.6vw,3.3rem);letter-spacing:-.05em;line-height:1.04}
     .sub{color:var(--muted);font-size:1.02rem;line-height:1.7;max-width:58ch}
     .ctaRow{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
 
     .spec{display:grid;gap:10px;margin-top:18px}
-    .specRow{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;border-radius:14px;background:rgba(15,14,20,.7);border:1px solid rgba(255,255,255,.08)}
+    .specRow{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;border-radius:14px;background:rgba(255,255,255,.92);border:1px solid rgba(15,23,42,.08)}
     .specRow .k{color:var(--muted2);font-size:.85rem}
     .specRow .v{font-weight:800}
 
@@ -73,7 +80,7 @@
     .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
     @media(max-width:900px){.grid{grid-template-columns:1fr}}
 
-    .card{border:1px solid var(--stroke);background:rgba(15,14,20,.55);border-radius:18px;padding:20px}
+    .card{border:1px solid var(--stroke);background:rgba(255,255,255,.90);border-radius:18px;padding:20px;box-shadow:0 18px 60px rgba(15,23,42,.06)}
     .card h3{margin:0 0 10px;font-size:1.05rem;letter-spacing:-.02em}
     .card p{margin:0;color:var(--muted);line-height:1.65}
 
@@ -94,7 +101,7 @@
     .footer{padding:30px 0 40px;color:rgba(255,255,255,.35)}
     .footRow{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.10);padding-top:16px}
 
-    .note{font-size:.86rem;color:rgba(255,255,255,.45);margin-top:10px}
+    .note{font-size:.86rem;color:var(--muted2);margin-top:10px}
   </style>
 </head>
 <body>
@@ -102,15 +109,9 @@
   <div class="wrap">
     <div class="nav">
       <a class="brand" href="#top">
-        <span class="logo" aria-hidden="true">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 3c2.8 2.9 4.2 5.5 4.2 7.7 0 2.7-1.7 4.8-4.2 4.8S7.8 13.4 7.8 10.7C7.8 8.5 9.2 5.9 12 3Z" stroke="rgba(245,158,11,.95)" stroke-width="1.6"/>
-            <path d="M8 19c1.2-1 2.6-1.5 4-1.5s2.8.5 4 1.5" stroke="rgba(180,83,9,.95)" stroke-width="1.6" stroke-linecap="round"/>
-          </svg>
-        </span>
         <div>
           <b>Lavenna Sewani</b>
-          <span>Brownies • Cakes • Baked to order</span>
+          <span>Calgary • Brownies • Cakes</span>
         </div>
       </a>
 
@@ -126,7 +127,7 @@
           <img src="hero.png" alt="Freshly baked chocolate brownies with milk chocolate drizzle" style="width:100%;height:auto;border-radius:16px;border:1px solid rgba(15,23,42,.10);box-shadow:0 14px 40px rgba(15,23,42,.10)" loading="eager" />
           <span class="pill">Freshly baked on order • 1 day notice</span>
           <h1>Brownies that hit the craving.
-            <span style="color:rgba(245,158,11,.95)">Every time.</span>
+            <span style="color:rgba(249,115,22,.98)">Every time.</span>
           </h1>
           <p class="sub">
             Soft inside, slightly crisp edges, and loaded with deep chocolate flavor — finished with a silky milk chocolate drizzle.
@@ -198,20 +199,62 @@
         </div>
         <div class="step">
           <b>Step 3</b>
-          <p>Pick up (or arrange delivery if offered). Enjoy warm or chilled — both are unreal.</p>
+          <p>Pick up in Calgary (or arrange delivery if offered). Enjoy warm or chilled — both are unreal.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="reviews" class="section">
+      <h2>What customers say</h2>
+      <p class="small">A few recent notes (sample reviews for now — replace with real ones anytime).</p>
+
+      <style>
+        .revWrap{margin-top:16px;overflow:hidden;border-radius:18px}
+        .revTrack{display:flex;gap:14px;animation:revScroll 28s linear infinite}
+        .rev{min-width:320px;max-width:420px;background:rgba(255,255,255,.92);border:1px solid rgba(15,23,42,.10);border-radius:18px;padding:16px;box-shadow:0 18px 60px rgba(15,23,42,.06)}
+        .rev p{margin:10px 0 0;color:var(--muted);line-height:1.65}
+        .rev .who{display:flex;align-items:center;justify-content:space-between;gap:10px}
+        .rev .who b{letter-spacing:-.02em}
+        .stars{color:#f59e0b;font-weight:900;letter-spacing:.05em}
+        @keyframes revScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+        .revWrap:hover .revTrack{animation-play-state:paused}
+        @media(max-width:700px){.revTrack{animation-duration:34s}.rev{min-width:280px}}
+      </style>
+
+      <div class="revWrap">
+        <div class="revTrack">
+          <div class="rev"><div class="who"><b>Sarah M.</b><span class="stars">★★★★★</span></div><p>“The brownies are unreal. Soft center, perfect edges, and the drizzle is chef’s kiss.”</p></div>
+          <div class="rev"><div class="who"><b>Jenna K.</b><span class="stars">★★★★★</span></div><p>“Ordered for a small celebration — everyone asked where they were from. Will reorder.”</p></div>
+          <div class="rev"><div class="who"><b>Amir R.</b><span class="stars">★★★★★</span></div><p>“Fresh baked, rich chocolate flavor, not overly sweet. Exactly what I wanted.”</p></div>
+          <div class="rev"><div class="who"><b>Nicole P.</b><span class="stars">★★★★★</span></div><p>“Beautifully packaged and tasted even better. Perfect little gift.”</p></div>
+          <div class="rev"><div class="who"><b>Kayla T.</b><span class="stars">★★★★★</span></div><p>“Crisp edges, soft inside — the texture is perfect. Calgary needs more of this.”</p></div>
+
+          <!-- duplicate for seamless scroll -->
+          <div class="rev"><div class="who"><b>Sarah M.</b><span class="stars">★★★★★</span></div><p>“The brownies are unreal. Soft center, perfect edges, and the drizzle is chef’s kiss.”</p></div>
+          <div class="rev"><div class="who"><b>Jenna K.</b><span class="stars">★★★★★</span></div><p>“Ordered for a small celebration — everyone asked where they were from. Will reorder.”</p></div>
+          <div class="rev"><div class="who"><b>Amir R.</b><span class="stars">★★★★★</span></div><p>“Fresh baked, rich chocolate flavor, not overly sweet. Exactly what I wanted.”</p></div>
+          <div class="rev"><div class="who"><b>Nicole P.</b><span class="stars">★★★★★</span></div><p>“Beautifully packaged and tasted even better. Perfect little gift.”</p></div>
+          <div class="rev"><div class="who"><b>Kayla T.</b><span class="stars">★★★★★</span></div><p>“Crisp edges, soft inside — the texture is perfect. Calgary needs more of this.”</p></div>
         </div>
       </div>
     </div>
 
     <div class="footer">
-      <div class="footRow">
-        <div>© <span id="y"></span> Lavenna Sewani</div>
+      <div class="footRow" style="align-items:flex-start">
+        <div>
+          <div style="font-weight:900;letter-spacing:-.03em;color:rgba(15,23,42,.92)">Lavenna Sewani</div>
+          <div style="margin-top:6px;color:var(--muted2)">Calgary, AB</div>
+          <div style="margin-top:10px;color:var(--muted2)">Email: <span style="font-weight:700">orders@lavennabakes.ca</span></div>
+          <div style="margin-top:4px;color:var(--muted2);font-size:.86rem">(placeholder email — replace anytime)</div>
+        </div>
         <div style="display:flex;gap:14px;flex-wrap:wrap">
-          <a href="#menu" style="text-decoration:none;color:rgba(255,255,255,.45)">Menu</a>
-          <a href="#how" style="text-decoration:none;color:rgba(255,255,255,.45)">Ordering</a>
-          <a href="https://www.facebook.com/share/1RvvL7qNSr/?mibextid=wwXIfr" target="_blank" rel="noopener" style="text-decoration:none;color:rgba(255,255,255,.45)">Facebook</a>
+          <a href="#menu" style="text-decoration:none;color:var(--muted2)">Menu</a>
+          <a href="#how" style="text-decoration:none;color:var(--muted2)">Ordering</a>
+          <a href="#reviews" style="text-decoration:none;color:var(--muted2)">Reviews</a>
+          <a href="https://www.facebook.com/share/1RvvL7qNSr/?mibextid=wwXIfr" target="_blank" rel="noopener" style="text-decoration:none;color:var(--muted2)">Facebook</a>
         </div>
       </div>
+      <div style="margin-top:14px;color:rgba(15,23,42,.45);font-size:.82rem">© <span id="y"></span> Lavenna Sewani. Fresh baked on order.</div>
       <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
     </div>
   </div>
