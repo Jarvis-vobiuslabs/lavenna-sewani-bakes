@@ -44,7 +44,7 @@
     a{color:inherit}
     .wrap{max-width:1050px;margin:0 auto;padding:0 22px}
 
-    .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0;position:sticky;top:0;background:linear-gradient(to bottom, rgba(255,250,243,.92), rgba(255,250,243,.62) 60%, transparent);backdrop-filter: blur(10px);z-index:10}
+    .nav{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:18px 0;position:sticky;top:0;background:linear-gradient(to bottom, rgba(255,247,237,.92), rgba(255,247,237,.62) 60%, transparent);backdrop-filter: blur(10px);z-index:10}
     .brand{display:flex;align-items:center;gap:10px;text-decoration:none;min-width:0}
     .brand b{font-weight:900;letter-spacing:-.03em;font-size:1rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
     .brand span{display:block;font-size:.78rem;color:var(--muted2);margin-top:2px}
@@ -145,7 +145,7 @@
           <div class="note">Orders placed at least 1 day prior. Freshly baked on order.</div>
         </div>
 
-        <div class="hCard" style="background:rgba(15,14,20,.55)">
+        <div class="hCard">
           <h3 style="margin:0 0 12px;letter-spacing:-.02em">Featured brownie box</h3>
           <p style="margin:0;color:var(--muted);line-height:1.65">Silky drizzle. Deep chocolate. Crisp edges. Soft center.</p>
           <div class="spec">
@@ -223,27 +223,20 @@
       <p class="small">A few recent notes (sample reviews for now — replace with real ones anytime).</p>
 
       <style>
-        .revWrap{margin-top:16px;overflow:hidden;border-radius:18px}
-        .revTrack{display:flex;gap:14px;animation:revScroll 28s linear infinite}
-        .rev{min-width:320px;max-width:420px;background:rgba(255,255,255,.92);border:1px solid rgba(15,23,42,.10);border-radius:18px;padding:16px;box-shadow:0 18px 60px rgba(15,23,42,.06)}
+        .revWrap{margin-top:16px}
+        .revTrack{display:flex;gap:14px;overflow-x:auto;padding-bottom:6px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+        .revTrack::-webkit-scrollbar{height:8px}
+        .revTrack::-webkit-scrollbar-thumb{background:rgba(15,23,42,.18);border-radius:999px}
+        .rev{scroll-snap-align:start;min-width:320px;max-width:420px;background:rgba(255,255,255,.92);border:1px solid rgba(15,23,42,.10);border-radius:18px;padding:16px;box-shadow:0 18px 60px rgba(15,23,42,.06)}
         .rev p{margin:10px 0 0;color:var(--muted);line-height:1.65}
         .rev .who{display:flex;align-items:center;justify-content:space-between;gap:10px}
         .rev .who b{letter-spacing:-.02em}
         .stars{color:#f59e0b;font-weight:900;letter-spacing:.05em}
-        @keyframes revScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-        .revWrap:hover .revTrack{animation-play-state:paused}
-        @media(max-width:700px){.revTrack{animation-duration:34s}.rev{min-width:280px}}
+        @media(max-width:700px){.rev{min-width:280px}}
       </style>
 
       <div class="revWrap">
-        <div class="revTrack">
-          <div class="rev"><div class="who"><b>Sarah M.</b><span class="stars">★★★★★</span></div><p>“The brownies are unreal. Soft center, perfect edges, and the drizzle is chef’s kiss.”</p></div>
-          <div class="rev"><div class="who"><b>Jenna K.</b><span class="stars">★★★★★</span></div><p>“Ordered for a small celebration — everyone asked where they were from. Will reorder.”</p></div>
-          <div class="rev"><div class="who"><b>Amir R.</b><span class="stars">★★★★★</span></div><p>“Fresh baked, rich chocolate flavor, not overly sweet. Exactly what I wanted.”</p></div>
-          <div class="rev"><div class="who"><b>Nicole P.</b><span class="stars">★★★★★</span></div><p>“Beautifully packaged and tasted even better. Perfect little gift.”</p></div>
-          <div class="rev"><div class="who"><b>Kayla T.</b><span class="stars">★★★★★</span></div><p>“Crisp edges, soft inside — the texture is perfect. Calgary needs more of this.”</p></div>
-
-          <!-- duplicate for seamless scroll -->
+        <div class="revTrack" aria-label="Customer reviews" role="region">
           <div class="rev"><div class="who"><b>Sarah M.</b><span class="stars">★★★★★</span></div><p>“The brownies are unreal. Soft center, perfect edges, and the drizzle is chef’s kiss.”</p></div>
           <div class="rev"><div class="who"><b>Jenna K.</b><span class="stars">★★★★★</span></div><p>“Ordered for a small celebration — everyone asked where they were from. Will reorder.”</p></div>
           <div class="rev"><div class="who"><b>Amir R.</b><span class="stars">★★★★★</span></div><p>“Fresh baked, rich chocolate flavor, not overly sweet. Exactly what I wanted.”</p></div>
@@ -251,6 +244,7 @@
           <div class="rev"><div class="who"><b>Kayla T.</b><span class="stars">★★★★★</span></div><p>“Crisp edges, soft inside — the texture is perfect. Calgary needs more of this.”</p></div>
         </div>
       </div>
+      <p class="note" style="margin-top:10px">Swipe to read more reviews.</p>
     </div>
 
     <div class="footer">
